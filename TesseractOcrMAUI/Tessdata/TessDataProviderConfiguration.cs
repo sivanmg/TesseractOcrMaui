@@ -1,4 +1,6 @@
-﻿namespace TesseractOcrMaui.Tessdata;
+﻿using Microsoft.Maui.Storage;
+
+namespace TesseractOcrMaui.Tessdata;
 
 /// <summary>
 /// New Configuration for TessDataProvider. Default implementation for ITessDataProviderConfiguration.

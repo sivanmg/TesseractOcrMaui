@@ -1,4 +1,6 @@
-﻿namespace TesseractOcrMaui.Tessdata;
+﻿using Microsoft.Maui.Storage;
+
+namespace TesseractOcrMaui.Tessdata;
 
 /// <summary>
 /// Class object used to provide information about traineddata files with Tesseract.

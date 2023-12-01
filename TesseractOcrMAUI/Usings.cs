@@ -5,3 +5,4 @@ global using Microsoft.Extensions.Logging.Abstractions;
 global using System.Runtime.InteropServices;
 global using ImageFormat = TesseractOcrMaui.Enums.ImageFormat;
 global using Rect = TesseractOcrMaui.Imaging.Rect;
+global using Microsoft.Extensions.DependencyInjection;

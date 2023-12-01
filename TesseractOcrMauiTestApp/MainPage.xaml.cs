@@ -109,6 +109,7 @@ public partial class MainPage : ContentPage
             // Currently usable image types
             FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>()
             {
+                [DevicePlatform.iOS] = new List<string>() { "public.jpeg", "public.jpg", "public.png" },
                 [DevicePlatform.Android] = new List<string>() { "image/png", "image/jpeg" },
                 [DevicePlatform.WinUI] = new List<string>() { ".png", ".jpg", ".jpeg" },
             })
