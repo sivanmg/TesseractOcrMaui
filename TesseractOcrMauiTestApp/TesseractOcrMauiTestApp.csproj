@@ -29,6 +29,10 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<NoWarn>NETSDK1201</NoWarn>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
 		<ProvisioningType>manual</ProvisioningType>
 	</PropertyGroup>
