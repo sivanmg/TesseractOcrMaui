@@ -4,11 +4,11 @@
 
 ## What is this?
 
-I didn't find any good up to date C# wrapper to Tesseract that would function with Maui on Android devices. This library wrapps native Tesseract C/C++ libraries to usable C# interfaces. Currently only Android and Windows are supported, because I don't have resources to test on MacOs or IOS. My own projects only support Windows and Android, so I didn't need those other platforms. If you need support for Apple devices, you have to build those libraries yourself and add them to project.
+I didn't find any good up to date C# wrapper to Tesseract that would function with Maui on Android devices. This library wrapps native Tesseract C/C++ libraries to usable C# interfaces and classes. Package also brings Dependency injection to the table, just add TesseractOcrMaui to you DI container and inject ITesseract to your maui page!
 
 ## Supported platforms
 
-Currently supports Windows and Android. Library is meant to be used with .NET MAUI project. You can see supported cpu architechtures down below.
+Currently supports Windows, iOS and Android. Library is meant to be used with .NET MAUI project. You can see supported cpu architechtures down below.
 
 | platform | Architechture |
 | -------- | ------------- |
@@ -17,12 +17,14 @@ Currently supports Windows and Android. Library is meant to be used with .NET MA
 | Android  | Arm-v7a       |
 | Android  | x86_64        |
 | Android  | x86           |
+| iOS      | arm64         |
 
 Supported runtimes
 
 > net7.0 or newer  
 > net7.0-windows10.0.19041 or newer  
 > net7.0-android or newer
+> net7.0-ios or newer
 
 Only png and jpeg libraries are compiled into tesseract native libraries, so only these image types are supported. Additional image libraries are added if needed later.
 
@@ -157,7 +159,7 @@ public interface ITesseract
 
     // Gets tessdata folder path from TessDataProvider (from configuration)
     string TessDataFolder { get; }
-   
+
     // Access used TessEngine for configuration (E.g. Whitelist chafacters)
     Action<ITessEngineConfigurable>? EngineConfiguration { set; }
 }
@@ -185,20 +187,20 @@ NOTE: Tesseract depends on other packages that may be licensed under different o
 
 This project does not depend on any third-party C# packages, but it needs [traineddata files](https://github.com/tesseract-ocr/tessdata/) to function. Parts of the code are also reused from [Charlesw Windows Tesseract wrapper](https://github.com/charlesw/tesseract).
 
-## Contributing, IOS and MacOS
+## Contributing
 
-If you are interested developing this project, please, open conversation in issues and describe your changes you want to make. Package doesn't currently support IOS or MacOS so any help for them is well appreciated.
+If you are interested developing this project, please, open conversation in issues and describe your changes you want to make. Email is also good way to approach me.
 
-## Documentation 
-- To see examples of use, see example project `Mainpage` [TesseractOcrMauiTestApp.Mainpage.xaml.cs](https://github.com/henrivain/TesseractOcrMaui/blob/master/TesseractOcrMauiTestApp/MainPage.xaml.cs)
-- Some instructions can be found from repository [`Documentation` -folder](https://github.com/henrivain/TesseractOcrMaui/tree/master/Documentation) 
-- Classes and methods have `xml comments` that try to explain code functionality.
+## Documentation
+
+-   To see examples of use, see example project `Mainpage` [TesseractOcrMauiTestApp.Mainpage.xaml.cs](https://github.com/henrivain/TesseractOcrMaui/blob/master/TesseractOcrMauiTestApp/MainPage.xaml.cs)
+-   Some instructions can be found from repository [`Documentation` -folder](https://github.com/henrivain/TesseractOcrMaui/tree/master/Documentation)
+-   Classes and methods have `xml comments` that try to explain code functionality.
 
 ## Support
 
 If you have any questions about anything related to this project, open issue or send me an email.
-
-Only Android and Windows are supported currently, because I have no recources to build and test for IOS and MacOS. Integrating these platforms should not be very hard if someone needs them. If you want to add them, just contact me.
+I myself can only test for Windows and Android. Apple support relies on other contributors.
 
 Henri Vainio  
 matikkaeditorinkaantaja(at)gmail.com
