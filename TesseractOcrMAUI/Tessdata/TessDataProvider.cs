@@ -1,5 +1,4 @@
 ﻿using TesseractOcrMaui.Results;
-using Microsoft.Maui.Storage;
 
 namespace TesseractOcrMaui.Tessdata;
 internal class TessDataProvider : ITessDataProvider

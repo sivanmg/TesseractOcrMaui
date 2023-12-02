@@ -1,13 +1,11 @@
-﻿using Microsoft.Maui.Storage;
-
-namespace TesseractOcrMaui.Tessdata;
+﻿namespace TesseractOcrMaui.Tessdata;
 
 /// <summary>
 /// Class object used to provide information about traineddata files with Tesseract.
 /// </summary>
 internal class TrainedDataCollection : ITrainedDataCollection
 {
-    private HashSet<string> Files { get; set; } = new();
+    private HashSet<string> Files { get; set; } = [];
 
     /// <summary>
     /// AddFile Traineddata file 
