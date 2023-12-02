@@ -1,68 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0-ios</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-	<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0-ios</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+		<IsBindingProject>true</IsBindingProject>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
 
 
-	<ItemGroup>
-		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-	</ItemGroup>
 
-
-	
 	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
+		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+		<!-- libtesseract -->
 		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libtesseract-ios.a">
 			<Kind>Static</Kind>
 			<ForceLoad>True</ForceLoad>
 			<IsCxx>True</IsCxx>
 			<SmartLink>True</SmartLink>
 		</NativeReference>
-	</ItemGroup>
-	
-	
-	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
+		<!-- libpng -->
+		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libpng16-ios.a">
+			<Kind>Static</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+		<!-- libtiff -->
+		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libtiff-ios.a">
+			<Kind>Static</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+		<!-- libjpeg -->
+		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libjpeg-ios.a">
+			<Kind>Static</Kind>
+			<SmartLink>False</SmartLink>
+		</NativeReference>
+		<!-- liblept -->
 		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\liblept-ios.a">
 			<Kind>Static</Kind>
 			<SmartLink>False</SmartLink>
 		</NativeReference>
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
-		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libjpeg-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-			
-		</NativeReference>
-	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
-		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libpng16-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-			
-		</NativeReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
-		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libtiff-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-			
-		</NativeReference>
-	</ItemGroup>
-	
 
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
 	</ItemGroup>
-
-	
 
 
 </Project>

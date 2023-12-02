@@ -1,7 +1,6 @@
 ﻿#if WINDOWS
 using System.Text;
 #endif
-using Microsoft.Maui.Storage;
 using TesseractOcrMaui.ImportApis;
 
 namespace TesseractOcrMaui;

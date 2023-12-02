@@ -1,6 +1,4 @@
-﻿#if DEBUG
-using Microsoft.Extensions.Logging;
-#endif
+﻿using Microsoft.Extensions.Logging;
 using TesseractOcrMaui;
 
 namespace TesseractOcrMauiTestApp;
@@ -17,8 +15,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddLogging();
 
+        builder.Services.AddLogging();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

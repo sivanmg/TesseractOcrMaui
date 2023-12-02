@@ -66,11 +66,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\TesseractOcrMAUI\TesseractOcrMauiIOS.csproj" />
+	  <Folder Include="Platforms\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Platforms\" />
+	  <ProjectReference Include="..\TesseractOcrMAUI\TesseractOcrMaui.csproj" />
 	</ItemGroup>
 
 
