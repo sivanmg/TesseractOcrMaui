@@ -10,7 +10,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.3</SupportedOSPlatformVersion>
 		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>-->
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
@@ -19,20 +19,22 @@
 	</PropertyGroup>
 	
 	<!-- Package, only with release mode -->
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
-		<IsBindingProject >True</IsBindingProject>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
+	
+
 	
 	
 
 
 	<!-- Package properties -->
 	<PropertyGroup>
-		<Version>1.0.8</Version>
+		<Version>1.0.9</Version>
 		<Title>Maui Tesseract ocr</Title>
 		<PackageId>TesseractOcrMaui</PackageId>
 		<Authors>henrivain</Authors>
-		<Description>Tesseract wrapper for .Net Maui. Supports Windows and Android platforms.</Description>
+		<Description>Tesseract wrapper for .Net Maui. Supports Windows, Android and IOS platforms.</Description>
 		<PackageProjectUrl></PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/henrivain/TesseractOcrMaui</RepositoryUrl>
@@ -101,12 +103,14 @@
 		<Folder Include="Properties\" />
 	</ItemGroup>
 
-	<!-- IOS bindings -->
-	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+
+		<!-- IOS bindings -->
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+		<IsBindingProject>True</IsBindingProject>
 	</PropertyGroup>
 		
-	<ItemGroup Condition="$(TargetFramework.Contains('ios'))">
+	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
 		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
 		<!-- libtesseract -->
 		<NativeReference Include="$(MSBuildThisFileDirectory)lib\IOS\Device\libtesseract-ios.a">

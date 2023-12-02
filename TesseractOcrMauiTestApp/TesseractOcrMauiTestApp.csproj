@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios</TargetFrameworks>
 		<!-- maccatalyst not supported. -->
 		<!-- Removed ;net7.0-maccatalyst -->
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
@@ -31,7 +31,6 @@
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
 		<ProvisioningType>manual</ProvisioningType>
-		<IsBindingProject>true</IsBindingProject>
 	</PropertyGroup>
 
 	<ItemGroup>
