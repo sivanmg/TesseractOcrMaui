@@ -31,6 +31,9 @@
 
 	<PropertyGroup>
 		<NoWarn>NETSDK1201</NoWarn>
+		<!-- For projects targeting .NET 8.0 and higher, specifying a RuntimeIdentifier will 
+			 no longer produce a self contained app by default. To continue building self-contained apps, 
+			 set the SelfContained property to true or use the [-]-self-contained argument.-->
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
