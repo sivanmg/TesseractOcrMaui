@@ -8,6 +8,7 @@ namespace TesseractOcrMaui;
 /// High-level functionality with Tesseract ocr. Default implementation for ITesseract interface.
 /// </summary>
 [UnsupportedOSPlatform("MACCATALYST")]
+[UnsupportedOSPlatform("TVOS")]
 public class Tesseract : ITesseract
 {
     /// <summary>

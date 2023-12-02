@@ -30,7 +30,7 @@
 
 	<!-- Package properties -->
 	<PropertyGroup>
-		<Version>1.0.9</Version>
+		<Version>1.0.10</Version>
 		<Title>Maui Tesseract ocr</Title>
 		<PackageId>TesseractOcrMaui</PackageId>
 		<Authors>henrivain</Authors>

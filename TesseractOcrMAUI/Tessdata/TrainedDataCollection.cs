@@ -5,7 +5,7 @@
 /// </summary>
 internal class TrainedDataCollection : ITrainedDataCollection
 {
-    private HashSet<string> Files { get; set; } = [];
+    private HashSet<string> Files { get; set; } = new();
 
     /// <summary>
     /// AddFile Traineddata file 
