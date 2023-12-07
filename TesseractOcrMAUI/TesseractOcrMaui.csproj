@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios</TargetFrameworks>
-		<!-- MacOS is not supported -->
-		<!-- Removed ;net7.0-maccatalyst -->
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -11,7 +9,7 @@
 		<Nullable>enable</Nullable>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.3</SupportedOSPlatformVersion>
-		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
@@ -63,22 +61,7 @@
 
 	<!-- Android native libraries-->
 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-		<AndroidNativeLibrary Include="lib\Android\arm64-v8a\libleptonica.so" />
-		<AndroidNativeLibrary Include="lib\Android\arm64-v8a\libpng.so" />
-		<AndroidNativeLibrary Include="lib\Android\arm64-v8a\libjpeg.so" />
-		<AndroidNativeLibrary Include="lib\Android\arm64-v8a\libtesseract.so" />
-		<AndroidNativeLibrary Include="lib\Android\armeabi-v7a\libleptonica.so" />
-		<AndroidNativeLibrary Include="lib\Android\armeabi-v7a\libpng.so" />
-		<AndroidNativeLibrary Include="lib\Android\armeabi-v7a\libjpeg.so" />
-		<AndroidNativeLibrary Include="lib\Android\armeabi-v7a\libtesseract.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86_64\libleptonica.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86_64\libpng.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86_64\libjpeg.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86_64\libtesseract.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86\libleptonica.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86\libpng.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86\libjpeg.so" />
-		<AndroidNativeLibrary Include="lib\Android\x86\libtesseract.so" />
+		<AndroidNativeLibrary Include="lib\Android\**" />
 	</ItemGroup>
 
 	<!-- Windows native libraries to nuget -->
