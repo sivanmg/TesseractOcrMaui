@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net7.0-ios</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -6,6 +6,49 @@
 		<IsBindingProject>true</IsBindingProject>
 	</PropertyGroup>
 
+
+
+	
+	
+	<!-- Package, only with release mode -->
+	<PropertyGroup Condition="'$(Configuration)' == 'Release' ">
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	</PropertyGroup>
+	
+
+	<!-- Package properties -->
+	<PropertyGroup>
+		<Version>0.0.1</Version>
+		<Title>Maui Tesseract ocr IOS</Title>
+		<PackageId>TesseractOcrMaui.IOS</PackageId>
+		<Authors>henrivain</Authors>
+		<Description>TesseractOcrMaui native bindings for iOS platform.</Description>
+		<PackageProjectUrl></PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/henrivain/TesseractOcrMaui</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>tesseract;ocr;maui;ios;</PackageTags>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Copyright>Copyright 2023 Henri Vainio</Copyright>
+		<!-- Output will be found inside this folder locally -->
+		<PackageOutputPath>C:\Nugets</PackageOutputPath>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackAsTool>False</PackAsTool>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<!-- Nuget includes -->
+	<ItemGroup>
+		<None Include="..\README.md" Link="Properties\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<!-- Api definitions -->
 	<ItemGroup>
 		<ObjcBindingApiDefinition Include="ApiDefinition.cs" />
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
@@ -71,5 +114,8 @@
 			<Kind>Static</Kind>
 			<SmartLink>False</SmartLink>
 		</NativeReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
 	</ItemGroup>
 </Project>
