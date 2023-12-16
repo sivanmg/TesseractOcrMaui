@@ -16,13 +16,14 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<NoWarn>NETSDK1201</NoWarn>
 	</PropertyGroup>
 
 	<!-- Package, only with release mode -->
 	<PropertyGroup Condition="'$(Configuration)' == 'Release' ">
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
-	
+
 
 	<!-- Package properties -->
 	<PropertyGroup>
@@ -99,9 +100,16 @@
 		<Folder Include="Properties\" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(Configuration)' == 'Debug' AND $(TargetFramework.Contains('-ios'))">
-		<ProjectReference Include="..\TesseractOcrMaui.IOS\TesseractOcrMaui.IOS.csproj" />
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+	  <ProjectReference Include="..\TesseractOcrMaui.IOS\TesseractOcrMaui.IOS.csproj" />
 	</ItemGroup>
+
+	<!-- Use nuget after it is generated in release mode -->
+	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug' AND $(TargetFramework.Contains('-ios'))">
+		<ProjectReference Include="..\TesseractOcrMaui.IOS\TesseractOcrMaui.IOS.csproj" />
+	</ItemGroup>-->
+
 	
+
 </Project>
 

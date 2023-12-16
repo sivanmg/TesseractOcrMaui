@@ -1,17 +1,15 @@
 ﻿#pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
-namespace TesseractOcrMaui.ImportApis;
 
-internal sealed partial class TesseractApi
+using System.Runtime.InteropServices;
+
+namespace TesseractOcrMaui.IOS;
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CA1401 // P/Invokes should not be visible
+public sealed partial class TesseractApi
 {
-#if WINDOWS
-    const string DllName = @"tesseract53.dll";
-#elif ANDROID21_0_OR_GREATER
-    const string DllName = "libtesseract";
-#elif IOS
-    const string DllName = "THIS SHOULD NOT BE REACHED ON IOS";
-#else
-    const string DllName = "Use Windows or Android Platform";
-#endif
+    const string DllName = "__Internal";
+
 
     const CharSet StrEncoding = CharSet.Ansi;
 
@@ -66,7 +64,7 @@ internal sealed partial class TesseractApi
     public static extern string SetInputImage(HandleRef handle);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "TessBaseAPISetPageSegMode")]
-    public static extern void SetPageSegmentationMode(HandleRef handle, PageSegmentationMode mode);
+    public static extern void SetPageSegmentationMode(HandleRef handle, int pageSegmentationMode);
 
     [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "TessBaseAPIRecognize")]
     public static extern int Recognize(HandleRef handle, HandleRef monitor);

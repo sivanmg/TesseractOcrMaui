@@ -1,4 +1,9 @@
-﻿using TesseractOcrMaui.ImportApis;
+﻿#if IOS
+using TesseractOcrMaui.IOS;
+#else
+using TesseractOcrMaui.ImportApis;
+#endif
+
 
 
 namespace TesseractOcrMaui;
@@ -134,7 +139,12 @@ public class TessEngine : DisposableObject, ITessEngineConfigurable
         }
 
         ProcessCount++;
+
+#if IOS
+        TesseractApi.SetPageSegmentationMode(Handle, (int?)mode ?? (int)DefaultSegmentationMode);
+#else
         TesseractApi.SetPageSegmentationMode(Handle, mode ?? DefaultSegmentationMode);
+#endif
         TesseractApi.SetImage(Handle, image.Handle);
         if (string.IsNullOrEmpty(inputName) is false)
         {
