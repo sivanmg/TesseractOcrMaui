@@ -54,45 +54,16 @@
 		<ObjcBindingCoreSource Include="StructsAndEnums.cs" />
 	</ItemGroup>
 	
-	<!-- IOS physical device -->
-	<ItemGroup>
-		<!-- libtesseract -->
-		<NativeReference Include="lib\IOS\Device\libtesseract-ios.a">
-			<Kind>Static</Kind>
-			<ForceLoad>True</ForceLoad>
-			<IsCxx>True</IsCxx>
-			<SmartLink>True</SmartLink>
-		</NativeReference>
-		<!-- libpng -->
-		<NativeReference Include="lib\IOS\Device\libpng16-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-		</NativeReference>
-		<!-- libtiff -->
-		<NativeReference Include="lib\IOS\Device\libtiff-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-		</NativeReference>
-		<!-- libjpeg -->
-		<NativeReference Include="lib\IOS\Device\libjpeg-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-		</NativeReference>
-		<!-- liblept -->
-		<NativeReference Include="lib\IOS\Device\liblept-ios.a">
-			<Kind>Static</Kind>
-			<SmartLink>False</SmartLink>
-		</NativeReference>
-	</ItemGroup>
+	
 
 	<!-- IOS simulator -->
 	<ItemGroup>
 		<!-- libtesseract -->
 		<NativeReference Include="lib\IOS\Simulator\libtesseract-sim.a">
 			<Kind>Static</Kind>
-			<ForceLoad>True</ForceLoad>
+			<ForceLoad>False</ForceLoad>
 			<IsCxx>True</IsCxx>
-			<SmartLink>True</SmartLink>
+			<SmartLink>False</SmartLink>
 		</NativeReference>
 		<!-- libpng -->
 		<NativeReference Include="lib\IOS\Simulator\libpng16-sim.a">

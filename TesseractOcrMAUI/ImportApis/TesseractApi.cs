@@ -1,4 +1,5 @@
-﻿#pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
+﻿#if !IOS
+#pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
 namespace TesseractOcrMaui.ImportApis;
 
 internal sealed partial class TesseractApi
@@ -105,3 +106,4 @@ internal sealed partial class TesseractApi
     public static extern int GetMeanConfidence(HandleRef handle);
  
 }
+#endif
