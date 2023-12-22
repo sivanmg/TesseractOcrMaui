@@ -1,8 +1,4 @@
-﻿#if IOS
-using TesseractOcrMaui.IOS;
-#else
-using TesseractOcrMaui.ImportApis;
-#endif
+﻿using TesseractOcrMaui.ImportApis;
 
 
 
@@ -141,7 +137,7 @@ public class TessEngine : DisposableObject, ITessEngineConfigurable
         ProcessCount++;
 
 #if IOS
-        TesseractApi.SetPageSegmentationMode(Handle, (int?)mode ?? (int)DefaultSegmentationMode);
+        TesseractApi.SetPageSegmentationMode(Handle, mode ?? DefaultSegmentationMode);
 #else
         TesseractApi.SetPageSegmentationMode(Handle, mode ?? DefaultSegmentationMode);
 #endif

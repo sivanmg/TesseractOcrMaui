@@ -1,10 +1,6 @@
 ﻿// Parts copied from https://github.com/charlesw/tesseract (With a lot reformatting)
 using TesseractOcrMaui.Imaging;
-#if IOS
-using TesseractOcrMaui.IOS;
-#else
 using TesseractOcrMaui.ImportApis;
-#endif
 using System.Runtime.CompilerServices;
 
 namespace TesseractOcrMaui;
@@ -265,11 +261,8 @@ public unsafe sealed class Pix : DisposableObject, IEquatable<Pix>
         {
             actualFormat = format.Value;
         }
-#if IOS
-        if (LeptonicaApi.PixWrite(filePath, Handle, (int)actualFormat) is not 0)
-#else
+
         if (LeptonicaApi.PixWrite(filePath, Handle, actualFormat) is not 0)
-#endif
         {
             throw new IOException($"Failed to save image to '{filePath}'.");
         }
@@ -653,11 +646,8 @@ public unsafe sealed class Pix : DisposableObject, IEquatable<Pix>
         /* Remove the speckle noise up to selSize x selSize */
         sel1 = LeptonicaApi.SelCreateFromString(selStr, selSize + 2, selSize + 2, "speckle" + selSize);
         pix4 = LeptonicaApi.PixHMT(new HandleRef(this, IntPtr.Zero), new HandleRef(this, pix3), new HandleRef(this, sel1));
-#if IOS
-        sel2 = LeptonicaApi.SelCreateBrick(selSize, selSize, 0, 0, (int)SelType.SEL_HIT);
-#else
+
         sel2 = LeptonicaApi.SelCreateBrick(selSize, selSize, 0, 0, SelType.SEL_HIT);
-#endif
 
         pix5 = LeptonicaApi.PixDilate(new HandleRef(this, IntPtr.Zero), new HandleRef(this, pix4), new HandleRef(this, sel2));
         pix6 = LeptonicaApi.PixSubtract(new HandleRef(this, IntPtr.Zero), new HandleRef(this, pix3), new HandleRef(this, pix5));
@@ -798,12 +788,7 @@ public unsafe sealed class Pix : DisposableObject, IEquatable<Pix>
         else
         {
             // handle general case
-#if IOS
-            resultHandle = LeptonicaApi.PixRotate(Handle, angleInRadians, (int)method, (int)fillColor, width.Value, height.Value);
-#else
             resultHandle = LeptonicaApi.PixRotate(Handle, angleInRadians, method, fillColor, width.Value, height.Value);
-#endif
-
         }
 
         if (resultHandle == IntPtr.Zero)
