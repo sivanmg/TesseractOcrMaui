@@ -57,7 +57,7 @@
 	
 
 	<!-- IOS simulator -->
-	<ItemGroup>
+	<ItemGroup Condition="$(RuntimeIdentifier.Contains('iossimulator'))">
 		<!-- libtesseract -->
 		<NativeReference Include="lib\IOS\Simulator\libtesseract-sim.a">
 			<Kind>Static</Kind>

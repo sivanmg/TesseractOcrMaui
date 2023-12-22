@@ -64,5 +64,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\TesseractOcrMAUI\TesseractOcrMaui.csproj" />
 	</ItemGroup>
+	
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionTesseractOcrMauiTestAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
